@@ -28,15 +28,16 @@ public class Interrupteur : MonoBehaviour
     
     void OnTriggerStay(Collider element)
     {
+        Debug.Log("Fk");
         nbJS = player_able.GetComponent<Player>().nbJS;
         if (used == false && element.gameObject == player_able && Input.GetButtonDown("Joystick " + nbJS + " Button A"))
         {
-            Grille tmp;
+            Debug.Log("Ok");
             gameObject.SetActive(false);
             used = true;
             hunter.transform.position = Grille.transform.position;
-            
-            Destroy(Grille);
+
+            Grille.SetActive(false);
         }
     }
 }

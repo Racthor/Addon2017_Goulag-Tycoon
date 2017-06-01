@@ -18,11 +18,15 @@ public class Grille : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter(Collision col)
+
+    void OnCollisionStay(Collision col)
     {
+        Debug.Log("ok");
         if (col.gameObject == hunter)
         {
             Physics.IgnoreCollision(col.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
+        GameObject.Destroy(gameObject);
+
     }
 }
