@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Grille : MonoBehaviour {
-
-    public GameObject allowed;
+    
     private GameObject hunter;
 
 	// Use this for initialization
 	void Start ()
     {
-        hunter = GameObject.Find("Hunter");
-        allowed = null;
+        hunter = GameObject.Find("JoueurBleu");
 	}
 	
 	// Update is called once per frame
@@ -22,9 +20,9 @@ public class Grille : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject == hunter || col.gameObject == allowed)
+        if (col.gameObject == hunter)
         {
-            Physics.IgnoreCollision(col.gameObject.GetComponent<Collider>(), col.gameObject.GetComponent<Collider>());
+            Physics.IgnoreCollision(col.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
     }
 }

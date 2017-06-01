@@ -17,7 +17,7 @@ public class Interrupteur : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-	    nbJS = player_able.GetComponent<Player>().nbJS;
+
     }
 	
 	// Update is called once per frame
@@ -28,14 +28,15 @@ public class Interrupteur : MonoBehaviour
     
     void OnTriggerStay(Collider element)
     {
+        nbJS = player_able.GetComponent<Player>().nbJS;
         if (used == false && element.gameObject == player_able && Input.GetButtonDown("Joystick " + nbJS + " Button A"))
         {
             Grille tmp;
             gameObject.SetActive(false);
             used = true;
             hunter.transform.position = Grille.transform.position;
-            tmp = Grille.GetComponent<Grille>();
-            tmp.allowed = player_able;
+            
+            Destroy(Grille);
         }
     }
 }
